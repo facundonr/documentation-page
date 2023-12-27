@@ -1,12 +1,7 @@
 *{
     margin: 0;
     padding: 0;
-    
-}
-
-html{
-    font-family: 'Lunasima', sans-serif;
-    scroll-behavior: smooth;
+    scroll-behavior: smooth;    
 }
 
 body{
@@ -14,7 +9,7 @@ body{
     height: 100vh;
     box-sizing: border-box;
     line-height: 1.5em;
-    
+    font-family: 'Lunasima', sans-serif;  
 }
 
 header{
@@ -28,7 +23,6 @@ header{
     color: rgb(249, 245, 255);
 }
 
-/* Tamaño total */
 nav{
     position: fixed;
     width: 25%;
@@ -50,7 +44,6 @@ main{
     background-color: rgb(249, 245, 255);
 }
 
-/* Barra de navegacion */
 main header{
     padding-left: 5%;
 }
@@ -87,7 +80,6 @@ nav li:hover{
     background-color: rgb(48,169,220);
 }
 
-/* Secciones */
 .main-section header div{
     background-color: rgba(48,169,220,40%);
     width: 40px;
