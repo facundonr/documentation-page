@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Flexbox - Guia básica</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lunasima:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Barra de navegacion -->
+    <nav id="navbar">
+        <header id="header" class="header">
+            <svg class="logo_css" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 452 520">
+                <path fill="#0c73b8" d="M41 460L0 0h451l-41 460-185 52" />
+                <path fill="#30a9dc" d="M226 472l149-41 35-394H226" />
+                <path fill="#ecedee" d="M226 208H94l5 57h127zm0-114H84l5 56h137zm0 261l-124-33 7 60 117 32z" />
+                <path fill="#fff" d="M226 265h69l-7 73-62 17v59l115-32 26-288H226v56h80l-6 58h-74z" />
+            </svg>
+
+            <div id="title" class="title">
+                <h1>CSS Flexbox</h1>
+                <h1>Guia basica</h1>
+            </div>
+        </header>
+
+        <ul>
+            <li><a href="#Conceptos_basicos" class="nav-link">Conceptos basicos</a></li>
+            <li><a href="#Lineas_de_inicio_y_de_fin" class="nav-link">Lineas de inicio y de fin</a></li>
+            <li><a href="#El_contenedor_flex" class="nav-link">El contenedor flex</a></li>
+            <li><a href="#Multilinea_con_flex-wrap" class="nav-link">Multilinea con flex-wrap</a></li>
+            <li><a href="#La_abreviatura_flex-flow" class="nav-link">La abreviatura flex-flow</a></li>
+            <li><a href="#Propiedades_aplicadas_a_los_item_flex" class="nav-link">Propiedades aplicadas a los item
+                    flex</a></li>
+            <li><a href="#Espacio_libre_entre_items" class="nav-link">Espacio libre entre items</a></li>
+        </ul>
+    </nav>
+    <!-- Cuerpo/ titulos desarrollados -->
+    <main id="main-doc">
+        <!-- Seccion conceptos basicos -->
+        <section id="Conceptos_basicos" class="main-section">
+            <header>Conceptos basicos</header>
+
+            <article>
+                <p> El Módulo de Caja Flexible, comúnmente llamado flexbox, fue diseñado como un modelo unidimensional
+                    de layout, y como un método que pueda ayudar a distribuir el espacio entre los ítems de una interfaz
+                    y mejorar las capacidades de alineación.</p>
+
+                <p>Cuando describimos a flexbox como unidimensional destacamos el hecho que flexbox maneja el layout en
+                    una sola dimensión a la vez — ya sea como fila o como columna.</p>
+
+                <h3>Los dos ejes de flexbox</h3>
+
+                <p>Cuando trabajamos con flexbox necesitamos pensar en términos de dos ejes: el eje principal y el eje
+                    cruzado.</p>
+
+                <h3>El eje principal</h3>
+
+                <p>El eje principal está definido por flex-direction, que posee cuatro posibles valores:
+                </p>
+
+                <ul>
+                    <li>
+                        <p>row</p>
+                    </li>
+                    <li>
+                        <p>row-reverse</p>
+                    </li>
+                    <li>
+                        <p>column</p>
+                    </li>
+                    <li>
+                        <p>column-reverse</p>
+                    </li>
+                </ul>
+
+                <p>Si elegimos row o row-reverse, el eje principal correrá a lo largo de la fila según la dirección de
+                    la línea.</p>
+
+                <code>.container{
+                        display: flex; 
+                        flex-direction: row; 
+                }</code>
+
+                <img src="https://developer.mozilla.org/es/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox/basics1.png"
+                    alt="row">
+
+                <p>Al elegir column o column-reverse el eje principal correrá desde el borde superior de la página hasta
+                    el final — según la dirección del bloque.
+                </p>
+
+                <code>.conteiner{
+                    display: flex; 
+                    flex-direction: column; 
+                }</code>
+
+                <img src="https://developer.mozilla.org/es/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox/basics2.png"
+                    alt="column">
+
+                <h3>El eje cruzado</h3>
+
+                <p>El eje cruzado va perpendicular al eje principal, y por lo tanto si flex-direction (del eje
+                    principal) es row o row-reverse el eje cruzado irá por las columnas.</p>
+
+                <img src="https://developer.mozilla.org/es/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox/basics3.png"
+                    alt="row-2">
+
+                <p>Si el eje principal es column o column-reverse entonces el eje cruzado corre a lo largo de las filas.
+                </p>
+
+                <img src="https://developer.mozilla.org/es/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox/basics4.png"
+                    alt="column-2">
+            </article>
+        </section>
+
+        <section id="Lineas_de_inicio_y_de_fin" class="main-section">
+            <header>Lineas de inicio y de fin</header>
+
+            <article>
+                <p>Si flex-direction es row y estoy trabajando en español, entonces el margen inicial del eje principal
+                    quedará a la izquierda, y el margen final a la derecha.</p>
+
+                <img src="https://developer.mozilla.org/es/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox/basics5.png"
+                    alt="b5">
+
+                <p>Si fuera a trabajar en árabe, entonces el margen inicial de mi eje principal quedaría a la derecha y
+                    el margen final a la izquierda.</p>
+
+                <img src="https://developer.mozilla.org/es/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox/basics6.png"
+                    alt="b6">
+            </article>
+        </section>
+
+        <section id="El_contenedor_flex" class="main-section">
+            <header>El contenedor flex</header>
+
+            <article>
+                <p>Un área del documento que contiene un flexbox es llamada <b>contenedor flex</b>. Para crear un
+                    contenedor flex, establecemos la propiedad del área del contenedor display como <span>flex</span> o
+                    <span>inline-flex</span>. Tan pronto como hacemos esto, los hijos directos de este contenedor se
+                    vuelven ítems flex. Como con todas las propiedades de CSS, se definen algunos valores iniciales, así
+                    que cuando creemos un contenedor flex todos los ítems flex contenidos se comportarán de la siguiente
+                    manera:
+                </p>
+
+                <ul>
+                    <li>Los ítems se despliegan sobre una fila (la propiedad <span>flex-direction</span> por defecto es
+                        <span>row</span>).
+                    </li>
+                    <li>Los ítems empiezan desde el margen inicial sobre el eje principal.</li>
+                    <li>Los ítems no se ajustan en la dimensión principal, pero se pueden contraer.</li>
+                    <li>Los ítems se ajustarán para llenar el tamaño del eje cruzado.</li>
+                    <li>La propiedad <span>flex-basis</span> es definida como <span>auto</span>.</li>
+                    <li>La propiedad <span>flex-wrap</span> es definida como <span>nowrap</span>.</li>
+                </ul>
+
+                <p>El resultado es que todos los ítems se alinearán en una solo fila, usando el tamaño del contenedor
+                    como su tamaño en el eje principal. Si hay más ítems de los que caben en el contenedor, estos no
+                    pasarán más abajo si no que sobrepasarán el margen. Si hay ítems más altos que otros, todos los
+                    ítems serán ajustados en el eje cruzado para alcanzar al mayor.</p>
+
+                <h3>Cambiar flex direction</h3>
+
+                <p>Al añadir la propiedad <span>flex-direction</span> en el contenedor flex nos permite cambiar la
+                    dirección de cómo los ítems son desplegados. Colocando <span>flex-direction: row-reverse</span> se
+                    mantendrá el despliegue a lo largo de la fila, sin embargo el inicio y final quedarán al revés del
+                    original.</p>
+
+                <p>Si cambiamos <span>flex-direction</span> a <span>column</span> el eje principal se cambiará y los
+                    ítems aparecerán en una columna. Colocando column-reverse las líneas de inicio y fin serán
+                    nuevamente puestas al revés.</p>
+
+                <code>.container{
+                        display: flex;
+                        flex-direction: row-reverse;
+                      }
+                </code>
+            </article>
+        </section>
+
+        <section id="Multilinea_con_flex-wrap" class="main-section">
+            <header>Multilinea con flex-wrap</header>
+
+            <article>
+                <p> Es posible lograr que nuestros ítems flex sean repartidos en varías líneas, considerando cada línea
+                    como un nuevo contenedor flex.</p>
+
+                <p>Para lograr repartirse en varias líneas añada la propiedad <span>flex-wrap</span> con el valor
+                    <span>wrap</span>. Cuando los ítems sean demasiados para desplegarlos en una línea, serán repartidos
+                    en la línea siguiente. El ejemplo en vivo de abajo contiene ítems que se les ha asignando un ancho,
+                    donde el ancho total de los ítems excede al del contenedor flex. Cuando <span>flex-wrap</span> se
+                    coloca como <span>wrap</span>, los ítems se repartirán. Al colocarlo como <span>nowrap</span>, el
+                    cual es el valor inicial, estos se contraerán para calzar con el contenedor ya que usan los valores
+                    iniciales de flexbox que permiten que los ítems se contraigan. Al usar <span>nowrap</span> los ítems
+                    podrían salirse del margen si estos no pudieran contraerse, o no contraerse lo suficiente para ser
+                    calzados.
+                </p>
+
+                <code>.container{
+                    display: flex;
+                    flex-wrap: wrap;
+                }
+              </code>
+            </article>
+        </section>
+
+        <section id="La_abreviatura_flex-flow" class="main-section">
+            <header>La abreviatura flex-flow</header>
+
+            <article>
+                <p>Se pueden combinar las propiedades <span>flex-direction</span> y <span>flex-wrap</span> en la
+                    abreviatura <span>flex-flow</span>. El primer valor especificado es <span>flex-direction</span> y el
+                    segundo valor es <span>flex-wrap</span>.
+                </p>
+
+                <code>.container {
+                    display: flex;
+                    flex-flow: row wrap;
+                  }</code>
+            </article>
+        </section>
+
+        <section id="Propiedades_aplicadas_a_los_item_flex" class="main-section">
+            <header>Propiedades aplicadas a los item flex</header>
+
+            <article>
+                <p>Para obtener más control sobre los ítems flex podemos apuntarlos directamente. Hacemos esto a través
+                    de tres propiedades:</p>
+
+                <ul>
+                    <li><span>flex-grow</span></li>
+                    <li><span>flex-shrink</span></li>
+                    <li><span>flex-basis</span></li>
+                </ul>
+
+                <p>Antes de darle sentido a estas propiedades debemos considerar el concepto de espacio disponible. Lo
+                    que hacemos cuando cambiamos el valor de alguna de estas propiedades es cambiar la forma que se
+                    distribuye el espacio disponible entre nuestros ítems</p>
+
+                <p>Si tenemos tres ítems con un ancho de 100 pixeles en un contenedor de 500 pixeles de ancho, entonces
+                    el espacio que se necesita para colocar nuestros ítems es de 300 pixeles. Esto deja 200 pixeles de
+                    espacio disponible. Si no cambiamos los valores iniciales entonces flexbox colocará ese espacio
+                    después del último ítem.</p>
+
+                <img src="https://developer.mozilla.org/es/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox/basics7.png"
+                    alt="b7">
+
+                <p>Si en cambio quisiéramos que los ítems crecieran para llenar ese espacio, entonces necesitaremos un
+                    método para distribuir el espacio sobrante entre los ítems. Es justo lo que harán las propiedades
+                    flex que aplicaremos a dichos ítems.</p>
+
+                <h3>La propiedad flex-basis</h3>
+
+                <p>Con flex-basis se define el tamaño de un ítem en términos del espacio que deja como espacio
+                    disponible. El valor inicial de esta propiedad es auto</p>
+
+                <p>Si los ítems no tiene un tamaño entonces el tamaño de su contenido es usado como flex-basis. Y por
+                    eso, apenas declarado display: flex en el padre a fin de crear ítems flex, todos estos ítems se
+                    ubicaron en una sola fila y tomaron solo el espacio necesario para desplegar su contenido.</p>
+
+                <h3>La propiedad flex-grow</h3>
+
+                <p>Con la propiedad flex-grow definida como un entero positivo, los ítems flex pueden crecer en el eje
+                    principal a partir de flex-basis. Esto hará que el ítem se ajuste y tome todo el espacio disponible
+                    del eje, o una proporción del espacio disponible si otro ítem también puede crecer.</p>
+
+                <p>Podemos usar flex-grow apropiadamente para distribuir el espacio en proporciones</p>
+
+                <h3>La propiedad flex-shrink</h3>
+
+                <p>Así como la propiedad flex-grow se encarga de añadir espacio sobre el eje principal, la propiedad
+                    flex-shrink controla como se contrae. Si no contamos con suficiente espacio en el contenedor para
+                    colocar los ítems y flex-shrink posee un valor entero positivo, el ítem puede contraerse a partir de
+                    flex-basis. Así como podemos asignar diferentes valores de flex-grow con el fin que un ítem se
+                    expanda más rápido que otros — un ítem con un valor más alto de flex-shrink se contraerá más rápido
+                    que sus hermanos que poseen valores menores.</p>
+
+            </article>
+        </section>
+
+        <section id="Espacio_libre_entre_items" class="main-section">
+            <header>Espacio libre entre items</header>
+
+            <article>
+                <p>Una característica clave de flexbox es la capacidad de alinear y justificar ítems sobre los ejes
+                    principal y cruzado, y distribuir el espacio entre los ítems flex.</p>
+
+                <h3><span>align-items</span></h3>
+
+                <p>La propiedad align-items alineará los ítems sobre el eje cruzado.</p>
+
+                <p>El valor inicial para esta propiedad es stretch razón por la cual los ítems se ajustan por defecto a
+                    la altura de aquel más alto. En efecto se ajustan para llenar el contenedor flex — el ítem más alto
+                    define la altura de este.</p>
+
+                <p>En cambio definimos align-items como flex-start para que los ítems se alineen al comienzo del
+                    contenedor flex, flex-end para alinearlos al final, o center para alinearlos al centro.</p>
+
+                <h3><span>justify-content</span></h3>
+
+                <p>La propiedad justify-content es usada para alinear los ítems en el eje principal, cuyo flex-direction
+                    define la dirección del flujo. El valor inicial es flex-start que alineará los ítems al inicio del
+                    margen del contenedor, pero también se podría definir como flex-end para alinearlos al final, o
+                    center para alinearlos al centro.</p>
+
+                <p>También podemos usar space-between para tomar todo el espacio sobrante después de que los ítems hayan
+                    sido colocados, y distribuir de forma pareja los ítems para que haya un espacio equitativo entre
+                    cada ítem. O bien, usamos el valor space-around para crear un espacio equitativo a la derecha e
+                    izquierda de cada ítem.</p>
+
+                <p>Los siguientes valores de justify-content:</p>
+
+                <ul>
+                    <li><span>space-evenly</span></li>
+                    <li><span>flex-start</span></li>
+                    <li><span>flex-end</span></li>
+                    <li><span>center</span></li>
+                    <li><span>space-around</span></li>
+                    <li><span>space-between</span></li>
+                </ul>
+
+            </article>
+        </section>
+    </main>
+</body>
+
+</html>
